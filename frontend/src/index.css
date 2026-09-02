@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+
+  --color-brand-green-50: #eaf5f0;
+  --color-brand-green-100: #cfe8dc;
+  --color-brand-green-600: #0e7a4f;
+  --color-brand-green-700: #0b6641;
+  --color-brand-green-800: #094f33;
+  --color-brand-green-900: #073d28;
+
+  --color-brand-navy-50: #eaeef4;
+  --color-brand-navy-600: #1f3a5f;
+  --color-brand-navy-800: #142744;
+  --color-brand-navy-900: #0d1b30;
+
+  --color-brand-gold-50: #fbf3df;
+  --color-brand-gold-400: #e2b93b;
+  --color-brand-gold-500: #c9a227;
+  --color-brand-gold-600: #a5820f;
+
+  --color-brand-cream: #faf8f2;
+
+  /* #Tobshaol (secondary/teen) editorial theme - deliberately distinct from
+     the primary-school and main-site palettes above. */
+  --color-teen-ink: #0a0a12;
+  --color-teen-surface: #16161f;
+  --color-teen-surface-2: #1f1f2c;
+  --color-teen-pink-400: #ff5fa8;
+  --color-teen-pink-600: #be185d;
+  --color-teen-violet-400: #a78bfa;
+  --color-teen-violet-600: #6d28d9;
+  --color-teen-cyan-400: #22d3ee;
+  --color-teen-cyan-600: #0e7490;
+  --color-teen-yellow-400: #facc15;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Belt-and-braces guard against accidental horizontal scroll on mobile.
+     Intentional horizontal scrollers (news rail, sliders) scroll inside
+     their own overflow-x-auto container, so this is safe alongside them. */
+  overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--color-brand-cream);
+}
+
+/* Strong, visible keyboard focus ring everywhere (WCAG 2.4.7) */
+:focus-visible {
+  outline: 3px solid var(--color-brand-gold-500);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 100;
+  background: var(--color-brand-navy-900);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
