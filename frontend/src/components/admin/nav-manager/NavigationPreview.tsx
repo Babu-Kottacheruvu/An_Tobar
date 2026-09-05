@@ -17,8 +17,8 @@ const THEME_STYLES = {
     pill: "text-white hover:bg-white/15",
   },
   tobshaol: {
-    bar: "bg-teen-ink",
-    pill: "text-white/90 hover:bg-white/10",
+    bar: "bg-teen-surface border border-brand-navy-800/10",
+    pill: "text-brand-navy-800/90 hover:bg-brand-navy-800/5",
   },
 } as const;
 

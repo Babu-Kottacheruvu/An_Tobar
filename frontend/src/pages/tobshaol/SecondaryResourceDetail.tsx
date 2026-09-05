@@ -48,16 +48,43 @@ export function SecondaryResourceDetail() {
     }
   };
 
+  const handleDownload = async () => {
+    const { downloadResourcePdf } = await import("../../utils/downloadResourcePdf");
+    downloadResourcePdf(
+      {
+        kicker: resourceType?.label[lang],
+        title: lang === "ga" ? resource.titleGa : resource.titleEn,
+        description: resource.description[lang],
+        meta: [
+          yearGroup && { label: t("tobshaol.filters.yearGroup"), value: yearGroup.label[lang] },
+          topic && { label: t("tobshaol.filters.topic"), value: topic.label[lang] },
+          resourceType && { label: t("tobshaol.filters.resourceType"), value: resourceType.label[lang] },
+          { label: t("bunscoil.card.author"), value: resource.author },
+          {
+            label: t("bunscoil.card.updated"),
+            value: new Date(resource.updatedDate).toLocaleDateString(lang === "ga" ? "ga-IE" : "en-IE", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            }),
+          },
+        ].filter((row): row is { label: string; value: string } => Boolean(row)),
+      },
+      `${resource.slug}.pdf`,
+      lang,
+    );
+  };
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
       <Breadcrumbs variant="dark" items={breadcrumbItems} />
 
       <div className="mt-8 flex items-start gap-4">
-        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white/10 text-teen-cyan-400">
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-teen-cyan-600/10 text-teen-cyan-600">
           <TypeIcon className="h-7 w-7" />
         </span>
         <div>
-          <h1 className="text-3xl font-black text-white sm:text-4xl">
+          <h1 className="text-3xl font-black text-brand-navy-900 sm:text-4xl">
             {lang === "ga" ? resource.titleGa : resource.titleEn}
           </h1>
         </div>
@@ -65,17 +92,18 @@ export function SecondaryResourceDetail() {
 
       <ul className="mt-5 flex flex-wrap gap-2 text-xs font-bold">
         {resourceType && (
-          <li className="rounded-full bg-white/10 px-3 py-1.5 text-white/80">{resourceType.label[lang]}</li>
+          <li className="rounded-full bg-brand-navy-800/10 px-3 py-1.5 text-brand-navy-800/80">{resourceType.label[lang]}</li>
         )}
         {yearGroup && (
-          <li className="rounded-full bg-white/10 px-3 py-1.5 text-white/80">{yearGroup.label[lang]}</li>
+          <li className="rounded-full bg-brand-navy-800/10 px-3 py-1.5 text-brand-navy-800/80">{yearGroup.label[lang]}</li>
         )}
-        {topic && <li className="rounded-full bg-white/10 px-3 py-1.5 text-white/80">{topic.label[lang]}</li>}
+        {topic && <li className="rounded-full bg-brand-navy-800/10 px-3 py-1.5 text-brand-navy-800/80">{topic.label[lang]}</li>}
       </ul>
 
       <div className="mt-6 flex flex-wrap items-center gap-3">
         <button
           type="button"
+          onClick={handleDownload}
           className="flex items-center gap-2 rounded-md bg-teen-pink-600 px-5 py-3 text-sm font-bold text-white hover:bg-teen-pink-600/90"
         >
           <DownloadIcon className="h-4 w-4" />
@@ -85,7 +113,7 @@ export function SecondaryResourceDetail() {
           <button
             type="button"
             onClick={handleShare}
-            className="flex items-center gap-2 rounded-md border border-white/20 px-5 py-3 text-sm font-bold text-white hover:bg-white/10"
+            className="flex items-center gap-2 rounded-md border border-brand-navy-800/20 px-5 py-3 text-sm font-bold text-brand-navy-900 hover:bg-brand-navy-800/5"
           >
             <ShareIcon className="h-4 w-4" />
             {t("bunscoil.detail.share")}
@@ -93,7 +121,7 @@ export function SecondaryResourceDetail() {
           <span
             role="status"
             aria-live="polite"
-            className={`absolute left-0 top-full mt-1 whitespace-nowrap text-xs font-semibold text-teen-cyan-400 transition-opacity ${
+            className={`absolute left-0 top-full mt-1 whitespace-nowrap text-xs font-semibold text-teen-cyan-600 transition-opacity ${
               shareCopied ? "opacity-100" : "opacity-0"
             }`}
           >
@@ -102,30 +130,30 @@ export function SecondaryResourceDetail() {
         </div>
       </div>
 
-      <p className="mt-8 text-base leading-relaxed text-white/80">{resource.description[lang]}</p>
+      <p className="mt-8 text-base leading-relaxed text-brand-navy-800/80">{resource.description[lang]}</p>
 
-      <div className="mt-10 rounded-xl border border-white/10 bg-teen-surface p-6 sm:p-8">
-        <h2 className="text-lg font-black text-white">{t("tobshaol.detail.resourceInfo")}</h2>
+      <div className="mt-10 rounded-xl border border-brand-navy-800/10 bg-teen-surface p-6 shadow-sm sm:p-8">
+        <h2 className="text-lg font-black text-brand-navy-900">{t("tobshaol.detail.resourceInfo")}</h2>
         <dl className="mt-4 grid grid-cols-1 gap-4 text-sm sm:grid-cols-2">
           <div>
-            <dt className="font-semibold text-white/70">{t("tobshaol.filters.yearGroup")}</dt>
-            <dd className="text-white/85">{yearGroup?.label[lang]}</dd>
+            <dt className="font-semibold text-brand-navy-800/70">{t("tobshaol.filters.yearGroup")}</dt>
+            <dd className="text-brand-navy-800/90">{yearGroup?.label[lang]}</dd>
           </div>
           <div>
-            <dt className="font-semibold text-white/70">{t("tobshaol.filters.topic")}</dt>
-            <dd className="text-white/85">{topic?.label[lang]}</dd>
+            <dt className="font-semibold text-brand-navy-800/70">{t("tobshaol.filters.topic")}</dt>
+            <dd className="text-brand-navy-800/90">{topic?.label[lang]}</dd>
           </div>
           <div>
-            <dt className="font-semibold text-white/70">{t("tobshaol.filters.resourceType")}</dt>
-            <dd className="text-white/85">{resourceType?.label[lang]}</dd>
+            <dt className="font-semibold text-brand-navy-800/70">{t("tobshaol.filters.resourceType")}</dt>
+            <dd className="text-brand-navy-800/90">{resourceType?.label[lang]}</dd>
           </div>
           <div>
-            <dt className="font-semibold text-white/70">{t("bunscoil.card.author")}</dt>
-            <dd className="text-white/85">{resource.author}</dd>
+            <dt className="font-semibold text-brand-navy-800/70">{t("bunscoil.card.author")}</dt>
+            <dd className="text-brand-navy-800/90">{resource.author}</dd>
           </div>
           <div>
-            <dt className="font-semibold text-white/70">{t("bunscoil.card.updated")}</dt>
-            <dd className="text-white/85">
+            <dt className="font-semibold text-brand-navy-800/70">{t("bunscoil.card.updated")}</dt>
+            <dd className="text-brand-navy-800/90">
               {new Date(resource.updatedDate).toLocaleDateString(lang === "ga" ? "ga-IE" : "en-IE", {
                 day: "numeric",
                 month: "long",
@@ -138,7 +166,7 @@ export function SecondaryResourceDetail() {
 
       {related.length > 0 && (
         <div className="mt-12">
-          <h2 className="text-xl font-black text-white">{t("bunscoil.detail.relatedResources")}</h2>
+          <h2 className="text-xl font-black text-brand-navy-900">{t("bunscoil.detail.relatedResources")}</h2>
           <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
             {related.map((item) => (
               <TobshaolResourceCard key={item.id} resource={item} />

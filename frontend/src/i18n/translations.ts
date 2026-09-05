@@ -62,6 +62,7 @@ export const translations = {
   "common.viewAll": { en: "View all", ga: "Féach ar fad" },
   "common.viewResource": { en: "View resource", ga: "Féach ar an acmhainn" },
   "common.download": { en: "Download", ga: "Íoslódáil" },
+  "common.downloadPdf": { en: "Download PDF", ga: "Íoslódáil PDF" },
   "common.search": { en: "Search", ga: "Cuardaigh" },
   "common.searchPlaceholder": {
     en: "Search resources, news and more…",
@@ -72,6 +73,11 @@ export const translations = {
   "common.results": { en: "results", ga: "toradh" },
   "common.noResults": { en: "No results found.", ga: "Níor aimsíodh aon toradh." },
   "common.close": { en: "Close", ga: "Dún" },
+  "pdf.infoSheet": { en: "Resource information sheet", ga: "Bileog eolais acmhainne" },
+  "pdf.footerNote": {
+    en: "An Tobar is a design prototype with no file storage, so this PDF contains the catalogue information for this resource rather than the original teaching material.",
+    ga: "Is fréamhshamhail deartha é An Tobar gan aon stóráil comhad, mar sin tá an t-eolas catalóige don acmhainn seo sa PDF seo seachas an bunábhar teagaisc.",
+  },
   "common.previous": { en: "Previous", ga: "Roimhe seo" },
   "common.next": { en: "Next", ga: "Ar aghaidh" },
   "common.page": { en: "Page", ga: "Leathanach" },

@@ -23,10 +23,11 @@
   --color-brand-cream: #faf8f2;
 
   /* #Tobshaol (secondary/teen) editorial theme - deliberately distinct from
-     the primary-school and main-site palettes above. */
-  --color-teen-ink: #0a0a12;
-  --color-teen-surface: #16161f;
-  --color-teen-surface-2: #1f1f2c;
+     the primary-school and main-site palettes above, using a light
+     lavender-tinted background instead of the main site's cream. */
+  --color-teen-ink: #f5f2fb;
+  --color-teen-surface: #ffffff;
+  --color-teen-surface-2: #efe9f9;
   --color-teen-pink-400: #ff5fa8;
   --color-teen-pink-600: #be185d;
   --color-teen-violet-400: #a78bfa;
@@ -34,6 +35,7 @@
   --color-teen-cyan-400: #22d3ee;
   --color-teen-cyan-600: #0e7490;
   --color-teen-yellow-400: #facc15;
+  --color-teen-yellow-600: #92660a;
 }
 
 html {

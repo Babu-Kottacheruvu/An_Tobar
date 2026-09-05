@@ -5,6 +5,7 @@ import { classLevels } from "../../data/bunscoil/classLevels";
 import { themes } from "../../data/bunscoil/themes";
 import { bunscoilResourceTypes } from "../../data/bunscoil/resourceTypes";
 import { DocumentIcon, DownloadIcon, EyeIcon, HeartIcon } from "../icons";
+import { translate } from "../../i18n/translations";
 
 interface PrimaryResourceCardProps {
   resource: PrimaryResource;
@@ -24,6 +25,24 @@ export function PrimaryResourceCard({
   const theme = themes.find((item) => item.id === resource.theme);
   const resourceType = bunscoilResourceTypes.find((item) => item.id === resource.resourceType);
   const TypeIcon = resourceType?.icon ?? DocumentIcon;
+
+  const handleDownload = async () => {
+    const { downloadResourcePdf } = await import("../../utils/downloadResourcePdf");
+    downloadResourcePdf(
+      {
+        kicker: resourceType?.label[lang],
+        title: lang === "ga" ? resource.titleGa : resource.titleEn,
+        description: resource.description[lang],
+        meta: [
+          classLevel && { label: translate("bunscoil.filters.classLevel", lang), value: classLevel.label[lang] },
+          theme && { label: translate("bunscoil.card.theme", lang), value: theme.label[lang] },
+          { label: translate("bunscoil.card.author", lang), value: resource.author },
+        ].filter((row): row is { label: string; value: string } => Boolean(row)),
+      },
+      `${resource.slug}.pdf`,
+      lang,
+    );
+  };
 
   return (
     <article className="relative flex h-full flex-col overflow-hidden rounded-xl border-2 border-brand-navy-800/10 bg-white shadow-sm transition-shadow hover:shadow-lg">
@@ -102,6 +121,7 @@ export function PrimaryResourceCard({
           </button>
           <button
             type="button"
+            onClick={handleDownload}
             className="flex flex-1 items-center justify-center gap-1.5 rounded-md border border-brand-navy-800/25 px-3 py-2.5 text-sm font-bold text-brand-navy-900 hover:bg-brand-navy-50"
           >
             <DownloadIcon className="h-4 w-4" />

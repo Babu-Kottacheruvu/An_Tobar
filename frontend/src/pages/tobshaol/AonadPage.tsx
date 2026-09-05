@@ -65,15 +65,15 @@ export function AonadPage({ yearGroupId, unitId }: AonadPageProps) {
       />
 
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-black uppercase tracking-tight text-white sm:text-5xl">
+        <h1 className="text-4xl font-black uppercase tracking-tight text-brand-navy-900 sm:text-5xl">
           {lang === "ga" ? unit.titleGa : unit.titleEn}
         </h1>
-        <p className="mt-3 max-w-2xl text-base leading-relaxed text-white/70">
+        <p className="mt-3 max-w-2xl text-base leading-relaxed text-brand-navy-800/70">
           {unit.description[lang]}
         </p>
 
         {lessonSteps.length > 0 && (
-          <div className="mt-8 overflow-x-auto rounded-2xl border border-white/10 bg-teen-surface p-5 sm:p-6">
+          <div className="mt-8 overflow-x-auto rounded-2xl border border-brand-navy-800/10 bg-teen-surface p-5 shadow-sm sm:p-6">
             <LessonProgressPath
               steps={lessonSteps}
               onSelect={scrollTo}
@@ -95,7 +95,7 @@ export function AonadPage({ yearGroupId, unitId }: AonadPageProps) {
             );
           return (
             <section key={section.id} id={section.id} className="mt-14 scroll-mt-20">
-              <h2 className="text-xl font-black uppercase tracking-wide text-white/80">
+              <h2 className="text-xl font-black uppercase tracking-wide text-brand-navy-800/80">
                 {(lang === "ga" ? navItem?.titleGa : navItem?.titleEn) ?? section.id}
               </h2>
               <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -109,7 +109,7 @@ export function AonadPage({ yearGroupId, unitId }: AonadPageProps) {
 
         {related.length > 0 && (
           <section className="mt-14">
-            <h2 className="text-xl font-black uppercase tracking-wide text-white/80">
+            <h2 className="text-xl font-black uppercase tracking-wide text-brand-navy-800/80">
               {t("bunscoil.detail.relatedResources")}
             </h2>
             <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">

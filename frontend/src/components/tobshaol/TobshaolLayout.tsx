@@ -7,7 +7,7 @@ export function TobshaolLayout() {
   const { t } = useLanguage();
 
   return (
-    <div className="flex min-h-screen flex-col bg-teen-ink text-white">
+    <div className="flex min-h-screen flex-col bg-teen-ink text-brand-navy-900">
       <a href="#main-content" className="skip-link">
         {t("skip.toContent")}
       </a>

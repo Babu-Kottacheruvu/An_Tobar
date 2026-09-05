@@ -16,12 +16,12 @@ export function TobshaolHome() {
 
   return (
     <>
-      <section className="overflow-hidden border-b border-white/10 bg-linear-to-br from-teen-ink via-teen-surface to-teen-ink py-14 sm:py-20">
+      <section className="overflow-hidden border-b border-brand-navy-800/10 bg-linear-to-br from-teen-ink via-teen-surface to-teen-ink py-14 sm:py-20">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
-          <p className="text-sm font-black uppercase tracking-[0.3em] text-teen-cyan-400">
+          <p className="text-sm font-black uppercase tracking-[0.3em] text-teen-cyan-600">
             #Tobshaol
           </p>
-          <h1 className="mt-3 text-4xl font-black uppercase leading-none tracking-tight text-white sm:text-6xl">
+          <h1 className="mt-3 text-4xl font-black uppercase leading-none tracking-tight text-brand-navy-900 sm:text-6xl">
             {t("tobshaol.tagline")}
           </h1>
         </div>

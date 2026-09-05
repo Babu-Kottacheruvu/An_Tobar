@@ -16,10 +16,10 @@ export function TobshaolHeader() {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-teen-ink text-white">
+    <header className="sticky top-0 z-40 border-b border-brand-navy-800/10 bg-teen-surface text-brand-navy-900">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <Link to="/iar-bhunscoil" className="flex items-baseline gap-1 rounded-md">
-          <span className="text-2xl font-black tracking-tight text-teen-pink-400">#</span>
+          <span className="text-2xl font-black tracking-tight text-teen-pink-600">#</span>
           <span className="text-2xl font-black uppercase tracking-tight">Tobshaol</span>
         </Link>
 
@@ -33,7 +33,7 @@ export function TobshaolHeader() {
                 `rounded-full px-4 py-2 text-sm font-black uppercase tracking-wide transition-colors ${
                   isActive
                     ? "bg-teen-pink-600 text-white"
-                    : "text-white/80 hover:bg-white/10 hover:text-white"
+                    : "text-brand-navy-800/80 hover:bg-brand-navy-800/5 hover:text-brand-navy-900"
                 }`
               }
             >
@@ -46,7 +46,7 @@ export function TobshaolHeader() {
           <LanguageSwitcher className="hidden sm:inline-flex" />
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-white/20 text-white lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-brand-navy-800/20 text-brand-navy-900 lg:hidden"
             aria-expanded={mobileOpen}
             aria-controls="tobshaol-mobile-nav"
             aria-label={mobileOpen ? t("nav.closeMenu") : t("nav.menu")}
@@ -58,7 +58,7 @@ export function TobshaolHeader() {
       </div>
 
       {mobileOpen && (
-        <div id="tobshaol-mobile-nav" className="border-t border-white/10 bg-teen-surface px-4 py-4 lg:hidden">
+        <div id="tobshaol-mobile-nav" className="border-t border-brand-navy-800/10 bg-teen-surface px-4 py-4 lg:hidden">
           <div className="mb-4 sm:hidden">
             <LanguageSwitcher />
           </div>
@@ -71,7 +71,7 @@ export function TobshaolHeader() {
                   onClick={() => setMobileOpen(false)}
                   className={({ isActive }) =>
                     `block rounded-md px-4 py-3 text-base font-black uppercase tracking-wide ${
-                      isActive ? "bg-teen-pink-600 text-white" : "text-white/85 hover:bg-white/10"
+                      isActive ? "bg-teen-pink-600 text-white" : "text-brand-navy-800/85 hover:bg-brand-navy-800/5"
                     }`
                   }
                 >

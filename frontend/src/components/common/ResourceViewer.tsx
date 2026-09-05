@@ -21,6 +21,28 @@ export function ResourceViewer({ resource }: { resource: Resource }) {
   const isVideo = resource.type === "fisean";
   const Icon = isVideo ? PlayIcon : DocumentIcon;
 
+  const handleDownload = async () => {
+    const { downloadResourcePdf } = await import("../../utils/downloadResourcePdf");
+    downloadResourcePdf(
+      {
+        kicker: findLabel(resourceTypeOptions, resource.type, lang),
+        title: resource.title[lang],
+        description: resource.description[lang],
+        meta: [
+          { label: t("common.level"), value: findLabel(levelOptions, resource.level, lang) },
+          { label: t("common.subject"), value: findLabel(subjectOptions, resource.subject, lang) },
+          { label: t("common.type"), value: findLabel(resourceTypeOptions, resource.type, lang) },
+          {
+            label: t("common.audience"),
+            value: resource.audience.map((id) => findLabel(audienceOptions, id, lang)).join(", "),
+          },
+        ],
+      },
+      `${resource.slug}.pdf`,
+      lang,
+    );
+  };
+
   return (
     <div>
       <div className="flex items-start gap-4">
@@ -68,6 +90,7 @@ export function ResourceViewer({ resource }: { resource: Resource }) {
 
       <button
         type="button"
+        onClick={handleDownload}
         className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-md bg-brand-green-700 px-4 py-3 text-sm font-bold text-white hover:bg-brand-green-800 sm:w-auto"
       >
         <DownloadIcon className="h-5 w-5" />

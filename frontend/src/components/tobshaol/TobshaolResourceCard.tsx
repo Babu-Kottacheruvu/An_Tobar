@@ -22,42 +22,42 @@ export function TobshaolResourceCard({ resource }: { resource: TobshaolResource 
   const accent = ACCENT_BY_TYPE[resource.resourceType] ?? "bg-teen-pink-600";
 
   return (
-    <article className="relative flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-teen-surface">
+    <article className="relative flex h-full flex-col overflow-hidden rounded-xl border border-brand-navy-800/10 bg-teen-surface shadow-sm">
       <div className={`h-1.5 w-full ${accent}`} aria-hidden="true" />
       <div className="flex flex-1 flex-col p-5">
         <div className="flex items-center justify-between gap-2">
-          <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-white">
+          <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-navy-800/10 text-brand-navy-900">
             <TypeIcon className="h-5 w-5" />
           </span>
           {resourceType && (
-            <span className="text-xs font-black uppercase tracking-wide text-white/50">
+            <span className="text-xs font-black uppercase tracking-wide text-brand-navy-800/50">
               {resourceType.label[lang]}
             </span>
           )}
         </div>
 
-        <h3 className="mt-4 text-lg font-black leading-tight text-white">
+        <h3 className="mt-4 text-lg font-black leading-tight text-brand-navy-900">
           <Link to={`/iar-bhunscoil/acmhainni/${resource.slug}`} className="rounded after:absolute after:inset-0">
             {lang === "ga" ? resource.titleGa : resource.titleEn}
           </Link>
         </h3>
 
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-white/70">
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-brand-navy-800/70">
           {resource.description[lang]}
         </p>
 
         <ul className="mt-4 flex flex-wrap gap-2 text-xs font-bold">
           {yearGroup && (
-            <li className="rounded-full bg-white/10 px-2.5 py-1 text-white/80">
+            <li className="rounded-full bg-brand-navy-800/10 px-2.5 py-1 text-brand-navy-800/80">
               {yearGroup.label[lang]}
             </li>
           )}
           {topic && (
-            <li className="rounded-full bg-white/10 px-2.5 py-1 text-white/80">{topic.label[lang]}</li>
+            <li className="rounded-full bg-brand-navy-800/10 px-2.5 py-1 text-brand-navy-800/80">{topic.label[lang]}</li>
           )}
         </ul>
 
-        <p className="mt-4 text-xs font-semibold text-white/40">
+        <p className="mt-4 text-xs font-semibold text-brand-navy-800/40">
           {resource.author} · {t("bunscoil.card.updated")}{" "}
           {new Date(resource.updatedDate).toLocaleDateString(lang === "ga" ? "ga-IE" : "en-IE", {
             day: "numeric",

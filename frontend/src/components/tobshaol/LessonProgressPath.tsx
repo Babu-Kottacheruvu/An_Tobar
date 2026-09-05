@@ -27,10 +27,10 @@ export function LessonProgressPath({ steps, onSelect, ariaLabel }: LessonProgres
             <span className="flex h-11 w-11 items-center justify-center rounded-full bg-teen-pink-600 text-base font-black text-white sm:h-12 sm:w-12">
               {index + 1}
             </span>
-            <span className="text-xs font-bold text-white/70">{step.label}</span>
+            <span className="text-xs font-bold text-brand-navy-800/70">{step.label}</span>
           </button>
           {index < steps.length - 1 && (
-            <span className="h-0.5 w-6 shrink-0 bg-white/20 sm:w-10" aria-hidden="true" />
+            <span className="h-0.5 w-6 shrink-0 bg-brand-navy-800/15 sm:w-10" aria-hidden="true" />
           )}
         </li>
       ))}

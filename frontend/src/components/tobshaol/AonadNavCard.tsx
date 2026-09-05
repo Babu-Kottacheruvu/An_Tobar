@@ -8,11 +8,11 @@ export function AonadNavCard({ item }: { item: AonadNavItem }) {
 
   const content = (
     <>
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-teen-cyan-400">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-teen-cyan-600/10 text-teen-cyan-600">
         <Icon className="h-5 w-5" />
       </span>
       <span>
-        <span className="block text-sm font-black text-white">
+        <span className="block text-sm font-black text-brand-navy-900">
           {lang === "ga" ? item.titleGa : item.titleEn}
         </span>
       </span>
@@ -20,7 +20,7 @@ export function AonadNavCard({ item }: { item: AonadNavItem }) {
   );
 
   const className =
-    "flex items-center gap-3 rounded-xl border border-white/10 bg-teen-surface px-4 py-3.5 text-left shadow-sm transition-colors hover:border-teen-pink-400";
+    "flex items-center gap-3 rounded-xl border border-brand-navy-800/10 bg-teen-surface px-4 py-3.5 text-left shadow-sm transition-colors hover:border-teen-pink-400";
 
   if (item.action.type === "link") {
     return (

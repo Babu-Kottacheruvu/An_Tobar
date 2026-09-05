@@ -10,7 +10,7 @@ import { PrimaryResourceCard } from "../../components/bunscoil/PrimaryResourceCa
 import { BookIcon, DownloadIcon } from "../../components/icons";
 
 export function TeacherGuide() {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
   const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
   const [favourites, setFavourites] = useState<string[]>([]);
@@ -24,6 +24,20 @@ export function TeacherGuide() {
   const goToViewer = (index?: number) => {
     if (typeof index === "number") setActiveIndex(index);
     viewerRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const handleDownload = async () => {
+    const { downloadDocumentPdf } = await import("../../utils/downloadResourcePdf");
+    downloadDocumentPdf(
+      t("teacherGuide.featuredTitle"),
+      teacherGuideSections.map((section) => ({
+        heading: section.title[lang],
+        description: section.description[lang],
+        bullets: section.bullets.map((bullet) => bullet[lang]),
+      })),
+      "treoir-an-muinteora.pdf",
+      lang,
+    );
   };
 
   const relatedResources = useMemo(
@@ -42,8 +56,9 @@ export function TeacherGuide() {
       <Breadcrumbs items={[{ label: t("home.entryBunscoilTitle"), path: "/bunscoil" }, { label: t("bunscoil.nav.teacherGuide") }]} />
 
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-black text-brand-navy-900 sm:text-4xl">Treoir an Mhúinteora</h1>
-        <p className="mt-1 text-lg font-semibold text-brand-navy-800/60">Teacher Guide</p>
+        <h1 className="text-3xl font-black text-brand-navy-900 sm:text-4xl">
+          {t("bunscoil.nav.teacherGuide")}
+        </h1>
         <p className="mt-4 max-w-3xl text-base leading-relaxed text-brand-navy-800/80">
           {t("teacherGuide.intro")}
         </p>
@@ -88,6 +103,7 @@ export function TeacherGuide() {
               </button>
               <button
                 type="button"
+                onClick={handleDownload}
                 className="flex items-center gap-2 rounded-md border-2 border-white px-5 py-2.5 text-sm font-bold text-white hover:bg-white/10"
               >
                 <DownloadIcon className="h-4 w-4" />

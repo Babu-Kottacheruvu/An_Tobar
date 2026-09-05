@@ -23,7 +23,7 @@ export function Breadcrumbs({ items, variant = "light" }: BreadcrumbsProps) {
       aria-label="Breadcrumb"
       className={
         isDark
-          ? "border-b border-white/10 bg-teen-surface"
+          ? "border-b border-brand-navy-800/10 bg-teen-surface"
           : "border-b border-brand-navy-800/10 bg-brand-green-50"
       }
     >
@@ -34,13 +34,13 @@ export function Breadcrumbs({ items, variant = "light" }: BreadcrumbsProps) {
             <li key={`${item.label}-${index}`} className="flex items-center gap-1">
               {index > 0 && (
                 <ChevronRightIcon
-                  className={isDark ? "h-4 w-4 text-white/40" : "h-4 w-4 text-brand-navy-800/50"}
+                  className={isDark ? "h-4 w-4 text-brand-navy-800/50" : "h-4 w-4 text-brand-navy-800/50"}
                 />
               )}
               {isLast || !item.path ? (
                 <span
                   aria-current="page"
-                  className={isDark ? "font-semibold text-white" : "font-semibold text-brand-navy-900"}
+                  className={isDark ? "font-semibold text-brand-navy-900" : "font-semibold text-brand-navy-900"}
                 >
                   {item.label}
                 </span>
@@ -49,7 +49,7 @@ export function Breadcrumbs({ items, variant = "light" }: BreadcrumbsProps) {
                   to={item.path}
                   className={
                     isDark
-                      ? "rounded text-teen-cyan-400 underline-offset-2 hover:underline"
+                      ? "rounded text-teen-cyan-600 underline-offset-2 hover:underline"
                       : "rounded text-brand-green-800 underline-offset-2 hover:underline"
                   }
                 >

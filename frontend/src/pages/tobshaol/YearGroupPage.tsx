@@ -59,13 +59,13 @@ export function YearGroupPage({ yearGroupId }: YearGroupPageProps) {
       />
 
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-black uppercase tracking-tight text-white sm:text-5xl">
+        <h1 className="text-4xl font-black uppercase tracking-tight text-brand-navy-900 sm:text-5xl">
           {yearGroup.label[lang]}
         </h1>
 
         {units.length > 0 && (
           <div className="mt-10">
-            <h2 className="text-xl font-black uppercase tracking-wide text-white/80">
+            <h2 className="text-xl font-black uppercase tracking-wide text-brand-navy-800/80">
               {t("tobshaol.unitsHeading")}
             </h2>
             <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -84,7 +84,7 @@ export function YearGroupPage({ yearGroupId }: YearGroupPageProps) {
 
         {featured.length > 0 && (
           <section className="mt-14">
-            <h2 className="text-xl font-black uppercase tracking-wide text-white/80">
+            <h2 className="text-xl font-black uppercase tracking-wide text-brand-navy-800/80">
               {t("home.featuredResources")}
             </h2>
             <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -97,7 +97,7 @@ export function YearGroupPage({ yearGroupId }: YearGroupPageProps) {
 
         {recentlyAdded.length > 0 && (
           <section className="mt-14">
-            <h2 className="text-xl font-black uppercase tracking-wide text-white/80">
+            <h2 className="text-xl font-black uppercase tracking-wide text-brand-navy-800/80">
               {t("tobshaol.recentlyAdded")}
             </h2>
             <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -110,7 +110,7 @@ export function YearGroupPage({ yearGroupId }: YearGroupPageProps) {
 
         {popular.length > 0 && (
           <section className="mt-14">
-            <h2 className="text-xl font-black uppercase tracking-wide text-white/80">
+            <h2 className="text-xl font-black uppercase tracking-wide text-brand-navy-800/80">
               {t("tobshaol.popularResources")}
             </h2>
             <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">

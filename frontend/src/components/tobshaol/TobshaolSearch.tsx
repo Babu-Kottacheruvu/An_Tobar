@@ -33,8 +33,8 @@ function FilterChip({
     <label
       className={`flex cursor-pointer items-center gap-2 rounded-full border px-3.5 py-2 text-sm font-bold transition-colors ${
         checked
-          ? "border-teen-pink-400 bg-teen-pink-600/20 text-teen-pink-400"
-          : "border-white/15 text-white/70 hover:border-white/30"
+          ? "border-teen-pink-400 bg-teen-pink-600/10 text-teen-pink-600"
+          : "border-brand-navy-800/15 text-brand-navy-800/70 hover:border-brand-navy-800/30"
       }`}
     >
       <input type="checkbox" checked={checked} onChange={onChange} className="h-4 w-4 accent-teen-pink-600" />
@@ -74,13 +74,13 @@ export const TobshaolSearch = forwardRef<TobshaolSearchHandle>(function Tobshaol
 
   return (
     <div>
-      <h2 className="text-2xl font-black uppercase tracking-tight text-white sm:text-3xl">
+      <h2 className="text-2xl font-black uppercase tracking-tight text-brand-navy-900 sm:text-3xl">
         {t("tobshaol.searchHeading")}
       </h2>
-      <p className="mt-2 max-w-xl text-sm text-white/60">{t("tobshaol.searchIntro")}</p>
+      <p className="mt-2 max-w-xl text-sm text-brand-navy-800/60">{t("tobshaol.searchIntro")}</p>
 
       <div className="relative mt-5 max-w-lg">
-        <SearchIcon className="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-white/40" />
+        <SearchIcon className="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-brand-navy-800/40" />
         <label htmlFor="tobshaol-search-input" className="sr-only">
           {t("common.search")}
         </label>
@@ -90,13 +90,13 @@ export const TobshaolSearch = forwardRef<TobshaolSearchHandle>(function Tobshaol
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder={t("common.searchPlaceholder")}
-          className="w-full rounded-full border border-white/15 bg-teen-surface py-3 pl-10 pr-4 text-sm text-white placeholder:text-white/40 focus:border-teen-pink-400"
+          className="w-full rounded-full border border-brand-navy-800/15 bg-teen-surface py-3 pl-10 pr-4 text-sm text-brand-navy-900 placeholder:text-brand-navy-800/40 focus:border-teen-pink-400"
         />
       </div>
 
       <div className="mt-6 space-y-5">
         <fieldset>
-          <legend className="text-xs font-black uppercase tracking-wide text-white/50">
+          <legend className="text-xs font-black uppercase tracking-wide text-brand-navy-800/50">
             {t("tobshaol.filters.yearGroup")}
           </legend>
           <div className="mt-2.5 flex flex-wrap gap-2">
@@ -112,7 +112,7 @@ export const TobshaolSearch = forwardRef<TobshaolSearchHandle>(function Tobshaol
         </fieldset>
 
         <fieldset>
-          <legend className="text-xs font-black uppercase tracking-wide text-white/50">
+          <legend className="text-xs font-black uppercase tracking-wide text-brand-navy-800/50">
             {t("tobshaol.filters.topic")}
           </legend>
           <div className="mt-2.5 flex flex-wrap gap-2">
@@ -128,7 +128,7 @@ export const TobshaolSearch = forwardRef<TobshaolSearchHandle>(function Tobshaol
         </fieldset>
 
         <fieldset>
-          <legend className="text-xs font-black uppercase tracking-wide text-white/50">
+          <legend className="text-xs font-black uppercase tracking-wide text-brand-navy-800/50">
             {t("tobshaol.filters.resourceType")}
           </legend>
           <div className="mt-2.5 flex flex-wrap gap-2">
@@ -144,12 +144,12 @@ export const TobshaolSearch = forwardRef<TobshaolSearchHandle>(function Tobshaol
         </fieldset>
       </div>
 
-      <p className="mt-6 text-sm font-bold text-white/50" role="status">
+      <p className="mt-6 text-sm font-bold text-brand-navy-800/50" role="status">
         {filtered.length} {t("common.results")}
       </p>
 
       {visible.length === 0 ? (
-        <p className="mt-4 rounded-xl border border-dashed border-white/15 p-8 text-center text-white/50">
+        <p className="mt-4 rounded-xl border border-dashed border-brand-navy-800/15 p-8 text-center text-brand-navy-800/50">
           {t("common.noResults")}
         </p>
       ) : (

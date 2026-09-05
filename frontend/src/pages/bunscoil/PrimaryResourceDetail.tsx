@@ -12,6 +12,7 @@ import { Modal } from "../../components/common/Modal";
 import { ReportIssueForm } from "../../components/bunscoil/ReportIssueForm";
 import { NotFound } from "../NotFound";
 import { DocumentIcon, DownloadIcon, HeartIcon, ShareIcon } from "../../components/icons";
+import { translate } from "../../i18n/translations";
 
 function useFavourites() {
   const [favourites, setFavourites] = useState<string[]>([]);
@@ -82,6 +83,36 @@ export function PrimaryResourceDetail() {
     }
   };
 
+  const handleDownload = async () => {
+    const { downloadResourcePdf } = await import("../../utils/downloadResourcePdf");
+    downloadResourcePdf(
+      {
+        kicker: resourceType?.label[lang],
+        title: lang === "ga" ? resource.titleGa : resource.titleEn,
+        description: resource.description[lang],
+        meta: [
+          { label: translate("bunscoil.filters.classLevel", lang), value: classLevel?.label[lang] ?? "" },
+          { label: translate("bunscoil.card.theme", lang), value: theme?.label[lang] ?? "" },
+          { label: translate("bunscoil.filters.topics", lang), value: topic?.label[lang] ?? "" },
+          { label: translate("bunscoil.detail.language", lang), value: resource.language[lang] },
+          { label: translate("bunscoil.detail.fileSize", lang), value: resource.fileSize },
+          { label: translate("bunscoil.card.author", lang), value: resource.author },
+          {
+            label: translate("bunscoil.card.updated", lang),
+            value: new Date(resource.updatedDate).toLocaleDateString(lang === "ga" ? "ga-IE" : "en-IE", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            }),
+          },
+          { label: translate("bunscoil.detail.suitableFor", lang), value: resource.suitableFor[lang] },
+        ],
+      },
+      `${resource.slug}.pdf`,
+      lang,
+    );
+  };
+
   return (
     <>
       <Breadcrumbs
@@ -137,6 +168,7 @@ export function PrimaryResourceDetail() {
           </button>
           <button
             type="button"
+            onClick={handleDownload}
             className="flex items-center gap-2 rounded-md border border-brand-navy-800/25 px-5 py-3 text-sm font-bold text-brand-navy-900 hover:bg-brand-navy-50"
           >
             <DownloadIcon className="h-4 w-4" />

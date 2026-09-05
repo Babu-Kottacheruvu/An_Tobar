@@ -37,6 +37,24 @@ export function ResourceLibraryCard({ result, onView }: ResourceLibraryCardProps
   const matchingCategories = resourceLibraryCategories.filter((category) => matchesCategory(result, category));
   const Icon = TYPE_ICONS[result.resourceType];
 
+  const handleDownload = async () => {
+    const { downloadResourcePdf } = await import("../../utils/downloadResourcePdf");
+    downloadResourcePdf(
+      {
+        kicker: typeOption?.label[lang],
+        title: lang === "ga" ? result.titleGa : result.titleEn,
+        description: result.description[lang],
+        meta: [
+          typeOption && { label: t("common.type"), value: typeOption.label[lang] },
+          schoolLevel && { label: t("common.level"), value: schoolLevel.label[lang] },
+          { label: t("search.yearGroup"), value: result.topic.label[lang] },
+        ].filter((row): row is { label: string; value: string } => Boolean(row)),
+      },
+      `${result.id}.pdf`,
+      lang,
+    );
+  };
+
   return (
     <article className="relative flex h-full flex-col overflow-hidden rounded-lg border border-brand-navy-800/12 bg-white shadow-sm transition-shadow hover:shadow-md">
       <div
@@ -95,6 +113,7 @@ export function ResourceLibraryCard({ result, onView }: ResourceLibraryCardProps
           </button>
           <button
             type="button"
+            onClick={handleDownload}
             className="flex flex-1 items-center justify-center gap-1.5 rounded-md border border-brand-navy-800/25 px-3 py-2.5 text-sm font-bold text-brand-navy-900 hover:bg-brand-navy-50"
           >
             <DownloadIcon className="h-4 w-4" />

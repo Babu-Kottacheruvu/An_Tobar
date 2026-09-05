@@ -49,6 +49,20 @@ export function DocumentViewer({ sections, activeIndex, onActiveIndexChange }: D
 
   const goTo = (index: number) => onActiveIndexChange(Math.max(0, Math.min(sections.length - 1, index)));
 
+  const handleDownload = async () => {
+    const { downloadDocumentPdf } = await import("../../utils/downloadResourcePdf");
+    downloadDocumentPdf(
+      t("teacherGuide.featuredTitle"),
+      sections.map((section) => ({
+        heading: section.title[lang],
+        description: section.description[lang],
+        bullets: section.bullets.map((bullet) => bullet[lang]),
+      })),
+      "treoir-an-muinteora.pdf",
+      lang,
+    );
+  };
+
   return (
     <div
       className={
@@ -142,6 +156,7 @@ export function DocumentViewer({ sections, activeIndex, onActiveIndexChange }: D
           </button>
           <button
             type="button"
+            onClick={handleDownload}
             aria-label={t("common.download")}
             className="flex h-9 w-9 items-center justify-center rounded-md hover:bg-white/10"
           >

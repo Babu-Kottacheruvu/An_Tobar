@@ -4,6 +4,7 @@ import { classLevels } from "../../data/bunscoil/classLevels";
 import { themes } from "../../data/bunscoil/themes";
 import { bunscoilResourceTypes } from "../../data/bunscoil/resourceTypes";
 import { DocumentIcon, DownloadIcon } from "../icons";
+import { translate } from "../../i18n/translations";
 
 export function PrimaryResourceViewer({ resource }: { resource: PrimaryResource }) {
   const { lang, t } = useLanguage();
@@ -12,6 +13,33 @@ export function PrimaryResourceViewer({ resource }: { resource: PrimaryResource 
   const topic = theme?.topics.find((item) => item.id === resource.topic);
   const resourceType = bunscoilResourceTypes.find((item) => item.id === resource.resourceType);
   const TypeIcon = resourceType?.icon ?? DocumentIcon;
+
+  const handleDownload = async () => {
+    const { downloadResourcePdf } = await import("../../utils/downloadResourcePdf");
+    downloadResourcePdf(
+      {
+        kicker: resourceType?.label[lang],
+        title: lang === "ga" ? resource.titleGa : resource.titleEn,
+        description: resource.description[lang],
+        meta: [
+          { label: translate("bunscoil.card.yearGroup", lang), value: classLevel?.label[lang] ?? "" },
+          { label: translate("bunscoil.card.theme", lang), value: theme?.label[lang] ?? "" },
+          { label: translate("bunscoil.filters.topics", lang), value: topic?.label[lang] ?? "" },
+          { label: translate("bunscoil.card.author", lang), value: resource.author },
+          {
+            label: translate("bunscoil.card.updated", lang),
+            value: new Date(resource.updatedDate).toLocaleDateString(lang === "ga" ? "ga-IE" : "en-IE", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            }),
+          },
+        ],
+      },
+      `${resource.slug}.pdf`,
+      lang,
+    );
+  };
 
   return (
     <div>
@@ -65,6 +93,7 @@ export function PrimaryResourceViewer({ resource }: { resource: PrimaryResource 
 
       <button
         type="button"
+        onClick={handleDownload}
         className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-md bg-brand-green-700 px-4 py-3 text-sm font-bold text-white hover:bg-brand-green-800 sm:w-auto"
       >
         <DownloadIcon className="h-5 w-5" />

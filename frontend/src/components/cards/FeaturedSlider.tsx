@@ -56,7 +56,7 @@ export function FeaturedSlider<T>({
             aria-label={t("common.previous")}
             className={
               isDark
-                ? "flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white hover:bg-white/10"
+                ? "flex h-10 w-10 items-center justify-center rounded-full border border-brand-navy-800/20 text-brand-navy-900 hover:bg-brand-navy-800/5"
                 : "flex h-10 w-10 items-center justify-center rounded-full border border-brand-navy-800/20 text-brand-navy-900 hover:bg-brand-green-50"
             }
           >
@@ -74,10 +74,10 @@ export function FeaturedSlider<T>({
                 className={`h-2.5 w-2.5 rounded-full transition-colors ${
                   itemIndex === index
                     ? isDark
-                      ? "bg-teen-pink-400"
+                      ? "bg-teen-pink-600"
                       : "bg-brand-green-700"
                     : isDark
-                      ? "bg-white/20"
+                      ? "bg-brand-navy-800/20"
                       : "bg-brand-navy-800/20"
                 }`}
               />
@@ -90,7 +90,7 @@ export function FeaturedSlider<T>({
             aria-label={t("common.next")}
             className={
               isDark
-                ? "flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white hover:bg-white/10"
+                ? "flex h-10 w-10 items-center justify-center rounded-full border border-brand-navy-800/20 text-brand-navy-900 hover:bg-brand-navy-800/5"
                 : "flex h-10 w-10 items-center justify-center rounded-full border border-brand-navy-800/20 text-brand-navy-900 hover:bg-brand-green-50"
             }
           >

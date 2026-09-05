@@ -20,7 +20,7 @@ export function TobshaolButtonGrid({ onSelectYear }: TobshaolButtonGridProps) {
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 className="text-2xl font-black uppercase tracking-tight text-white sm:text-3xl">
+      <h2 className="text-2xl font-black uppercase tracking-tight text-brand-navy-900 sm:text-3xl">
         {t("tobshaol.heroHeading")}
       </h2>
       <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -53,7 +53,7 @@ export function TobshaolButtonGrid({ onSelectYear }: TobshaolButtonGridProps) {
         })}
       </div>
 
-      <h3 className="mt-10 text-sm font-black uppercase tracking-wide text-white/60">
+      <h3 className="mt-10 text-sm font-black uppercase tracking-wide text-brand-navy-800/60">
         {t("tobshaol.smallButtonsHeading")}
       </h3>
       <div className="mt-4 flex flex-wrap gap-3">
@@ -66,7 +66,7 @@ export function TobshaolButtonGrid({ onSelectYear }: TobshaolButtonGridProps) {
             </>
           );
           const className =
-            "flex items-center gap-2 rounded-full border border-white/20 bg-teen-surface px-4 py-2.5 text-sm font-bold text-white hover:border-teen-pink-400 hover:text-teen-pink-400";
+            "flex items-center gap-2 rounded-full border border-brand-navy-800/20 bg-teen-surface px-4 py-2.5 text-sm font-bold text-brand-navy-900 hover:border-teen-pink-400 hover:text-teen-pink-600";
 
           if (button.path.startsWith("#")) {
             return (

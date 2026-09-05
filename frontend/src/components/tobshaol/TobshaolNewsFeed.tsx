@@ -17,18 +17,18 @@ export function TobshaolNewsFeed() {
 
   return (
     <aside aria-label={t("tobshaol.newsHeading")} className="lg:sticky lg:top-24">
-      <div className="rounded-2xl border border-white/10 bg-teen-surface p-5">
-        <h2 className="text-lg font-black uppercase tracking-wide text-white">
+      <div className="rounded-2xl border border-brand-navy-800/10 bg-teen-surface p-5 shadow-sm">
+        <h2 className="text-lg font-black uppercase tracking-wide text-brand-navy-900">
           {t("tobshaol.newsHeading")}
         </h2>
-        <ul className="mt-4 divide-y divide-white/10">
+        <ul className="mt-4 divide-y divide-brand-navy-800/10">
           {latest.map((item) => (
             <li key={item.id} className="py-3 first:pt-0 last:pb-0">
               <Link to={`/nuacht/${item.slug}`} className="group block rounded">
-                <p className="text-xs font-bold uppercase tracking-wide text-teen-cyan-400">
+                <p className="text-xs font-bold uppercase tracking-wide text-teen-cyan-600">
                   {formatDate(item.date, lang)}
                 </p>
-                <p className="mt-1 text-sm font-bold leading-snug text-white group-hover:text-teen-pink-400">
+                <p className="mt-1 text-sm font-bold leading-snug text-brand-navy-900 group-hover:text-teen-pink-600">
                   {item.title[lang]}
                 </p>
               </Link>
@@ -37,7 +37,7 @@ export function TobshaolNewsFeed() {
         </ul>
         <Link
           to="/nuacht"
-          className="mt-4 inline-block text-sm font-bold text-teen-pink-400 hover:underline"
+          className="mt-4 inline-block text-sm font-bold text-teen-pink-600 hover:underline"
         >
           {t("common.viewAll")} →
         </Link>
